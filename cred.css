@@ -1,0 +1,277 @@
+/* =====================================================================
+   CRED-STYLE LAYER  (inspired by cred.club)
+   Monochrome type, huge condensed uppercase headlines, serif italic
+   accents, square tiles with hairlines, 3D "pressable" buttons,
+   scroll-scrubbed text, masked heading reveals and a marquee.
+   The page BACKGROUND is intentionally untouched (html, body,
+   body::before, body::after and the loader keep style.css values).
+   Remove the cred.css / cred.js lines from the HTML to undo.
+   ===================================================================== */
+:root{
+  --c-head:"Archivo","Arial Narrow",Arial,sans-serif;
+  --c-body:"Manrope","Segoe UI",system-ui,sans-serif;
+  --c-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --c-ink:#ffffff;
+  --c-soft:rgba(255,255,255,.72);
+  --c-mute:rgba(255,255,255,.52);
+  --c-faint:rgba(255,255,255,.28);
+  --c-line:rgba(255,255,255,.12);
+  --c-line-hi:rgba(255,255,255,.4);
+  --c-tile:rgba(4,12,38,.34);
+  --c-tile-hi:rgba(4,12,38,.52);
+  --c-ease:cubic-bezier(.19,1,.22,1);
+}
+
+/* Lenis smooth scroll needs native smooth-scroll off */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+
+body{font:400 17px/1.6 var(--c-body);letter-spacing:0;color:var(--c-soft)}
+::selection{background:#fff;color:#000}
+.wrap{max-width:1180px;padding-inline:clamp(20px,4vw,40px)}
+section{padding-block:clamp(96px,13vw,180px)}
+
+/* ---------- Type ---------- */
+h1,h2,h3{font-family:var(--c-head);color:var(--c-ink)}
+h2,.h-big,.info h2,.h-about .h-big,.hf-text .h-big{
+  font:800 clamp(44px,8vw,112px)/.92 var(--c-head);font-stretch:78%;
+  text-transform:uppercase;letter-spacing:-.01em;color:var(--c-ink);
+  background:none;-webkit-text-fill-color:currentColor}
+.h-about .h-big,.hf-text .h-big{font-size:clamp(42px,6vw,84px)}
+.info .h-big::after,.reg h2::after{display:none}
+.h-big{margin-top:22px}
+
+/* serif italic accent inside headlines (added by cred.js on the last word) */
+.c-accent{font-family:var(--c-serif);font-style:italic;font-weight:400;text-transform:none;font-stretch:100%;letter-spacing:-.02em}
+
+.lead{font:400 clamp(18px,1.7vw,22px)/1.55 var(--c-body);color:var(--c-mute);letter-spacing:0;max-width:58ch}
+.lead b,.lead strong{color:var(--c-ink);font-weight:600}
+.h-about .lead::first-letter{float:none;font:inherit;color:inherit;padding:0}
+
+/* Eyebrows: tiny spaced caps with a leading rule */
+.eyebrow,.pill{display:inline-flex;align-items:center;gap:14px;padding:0;border:0;border-radius:0;box-shadow:none;
+  background:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  font:600 12px/1 var(--c-body);letter-spacing:.34em;text-transform:uppercase;color:var(--c-mute);-webkit-text-fill-color:currentColor}
+.eyebrow::before,.pill::before{content:"";display:block;width:32px;height:1px;background:var(--c-faint);border-radius:0;box-shadow:none;animation:none}
+.focus .eyebrow{font-size:10px!important}
+.sec-head{gap:22px;margin-bottom:80px}
+
+/* ---------- Nav ---------- */
+header{background:transparent;border-bottom:1px solid transparent;box-shadow:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none;transition:background .5s var(--c-ease),border-color .5s,transform .5s var(--c-ease)}
+header.scrolled{background:rgba(3,10,32,.62);border-bottom-color:var(--c-line);box-shadow:none;
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+header.c-hide{transform:translateY(-100%)}
+.nav{height:76px;max-width:1280px}
+.brand img{height:38px}
+.links{gap:clamp(18px,2.4vw,36px);font:600 11px/1 var(--c-body);letter-spacing:.24em;text-transform:uppercase}
+.links a{color:var(--c-mute);padding:8px 0;transition:color .3s}
+.links a:hover,.links a.active{color:var(--c-ink);font-weight:600}
+.links a::after{display:block;height:1px;background:#fff;border-radius:0;bottom:2px}
+.links a.active::after,.links a:hover::after{transform:scaleX(1)}
+@media (max-width:900px){
+  .nav{height:64px}
+  .links{background:rgba(3,10,32,.97);padding:24px clamp(20px,4vw,40px) 40px}
+  .links a{font:800 40px/1.05 var(--c-head);font-stretch:78%;letter-spacing:0;text-transform:uppercase;color:var(--c-mute);padding:10px 0;border:0}
+  .links a::after{display:none}
+  .links a.active{color:#fff}
+}
+.menu-btn{border:1px solid var(--c-line-hi);border-radius:0}
+
+/* ---------- Buttons: CRED's pressable 3D block ---------- */
+.hbtn,.btn,.nav-cta{
+  --lift:6px;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:0;
+  padding:19px 30px;border-radius:0;border:1px solid #fff;
+  background:#fff;color:#000;
+  font:700 12px/1 var(--c-body);letter-spacing:.24em;text-transform:uppercase;text-decoration:none;
+  box-shadow:calc(var(--lift) * -1) var(--lift) 0 0 rgba(255,255,255,.38);
+  transform:translate(0,0);
+  transition:transform .25s var(--c-ease),box-shadow .25s var(--c-ease),background .25s,color .25s;
+  -webkit-backdrop-filter:none;backdrop-filter:none}
+.hbtn:hover,.btn:hover,.nav-cta:hover{transform:translate(-3px,3px);box-shadow:-3px 3px 0 0 rgba(255,255,255,.38);background:#fff;color:#000}
+.hbtn:active,.btn:active,.nav-cta:active{transform:translate(calc(var(--lift) * -1),var(--lift));box-shadow:0 0 0 0 rgba(255,255,255,.38);transition-duration:.08s}
+.hbtn-gold,.btn-gold{background:#fff;color:#000}
+.hbtn-line,.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7);box-shadow:calc(var(--lift) * -1) var(--lift) 0 0 rgba(255,255,255,.14)}
+.hbtn-line:hover,.btn-ghost:hover{background:#fff;color:#000;border-color:#fff;box-shadow:-3px 3px 0 0 rgba(255,255,255,.3)}
+.hbtn svg{width:15px;height:15px;transition:transform .35s var(--c-ease)}
+.hbtn:hover svg{transform:translateX(4px)}
+.hbtn-sm{padding:16px 24px;font-size:11px}
+.nav-cta{--lift:4px;padding:13px 18px;font-size:10.5px}
+.btn[aria-disabled="true"]{background:transparent;color:var(--c-mute);border-color:var(--c-faint);box-shadow:none;cursor:not-allowed;transform:none}
+.ilink{display:inline-flex;align-items:center;gap:10px;color:#fff;font:700 12px/1 var(--c-body);letter-spacing:.24em;text-transform:uppercase;
+  text-decoration:none;padding-bottom:8px;border-bottom:1px solid var(--c-faint);transition:border-color .3s,gap .3s var(--c-ease)}
+.ilink:hover{text-decoration:none;border-color:#fff;gap:16px}
+.ilink svg{width:14px;height:14px}
+.nav-cta:focus-visible,.hbtn:focus-visible,.btn:focus-visible,a:focus-visible{outline:1px solid #fff;outline-offset:4px}
+
+/* ---------- Hero ---------- */
+.h-hero{min-height:calc(100svh - 76px);display:grid;align-items:center;padding-block:clamp(40px,6vw,80px) clamp(80px,9vw,120px)}
+.h-center{will-change:transform,opacity}
+.h-logoimg{width:min(880px,100%)}
+.h-tag{max-width:760px;margin-top:34px;font:400 italic clamp(22px,2.7vw,34px)/1.3 var(--c-serif);letter-spacing:-.01em;color:var(--c-soft)}
+.h-meta{margin-top:26px;font:600 11px/1.6 var(--c-body);letter-spacing:.22em;text-transform:uppercase;color:var(--c-mute)}
+.h-meta a{color:var(--c-soft)}
+.h-meta svg{color:var(--c-mute)}
+.h-count{margin-top:64px}
+.h-count>div{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0}
+.h-count>div+div{border-left:1px solid var(--c-line)}
+.h-count b{font:800 clamp(52px,8vw,104px)/1 var(--c-head);font-stretch:75%;letter-spacing:0;color:#fff;background:none;-webkit-text-fill-color:#fff;font-variant-numeric:tabular-nums}
+.h-count span{margin-top:14px;font:600 10px/1 var(--c-body);letter-spacing:.3em;text-transform:uppercase;color:var(--c-mute)}
+.h-ctas{margin-top:60px;gap:26px}
+.c-scrollcue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:grid;justify-items:center;gap:12px;
+  font:600 10px/1 var(--c-body);letter-spacing:.34em;text-transform:uppercase;color:var(--c-mute)}
+.c-scrollcue i{display:block;width:1px;height:46px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:cue 2.2s var(--c-ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-height:760px),(max-width:600px){.c-scrollcue{display:none}}
+
+/* ---------- Marquee ---------- */
+.c-marquee{overflow:hidden;border-block:1px solid var(--c-line);padding-block:22px;user-select:none}
+.c-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.c-track span{font:800 clamp(48px,8vw,108px)/1 var(--c-head);font-stretch:75%;text-transform:uppercase;white-space:nowrap;padding-inline:.35em;color:#fff}
+.c-track span.o{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+.c-track span.s{font-family:var(--c-serif);font-style:italic;font-weight:400;text-transform:none;font-stretch:100%;color:var(--c-mute)}
+@keyframes marq{to{transform:translateX(-50%)}}
+.c-marquee:hover .c-track{animation-play-state:paused}
+
+/* ---------- Manifesto (scroll-scrubbed text) ---------- */
+.c-manifesto{padding-block:clamp(120px,18vw,240px)}
+.c-manifesto .eyebrow{margin-bottom:40px}
+.scrub{margin:0;font:800 clamp(34px,5.6vw,76px)/1.04 var(--c-head);font-stretch:80%;text-transform:uppercase;letter-spacing:-.005em;color:#fff;max-width:18ch}
+.scrub .sw{opacity:.14;transition:opacity .35s linear}
+.scrub .sw.on{opacity:1}
+.scrub em{font-family:var(--c-serif);font-weight:400;text-transform:none;font-stretch:100%}
+
+/* ---------- Tiles: flat, square, hairline ---------- */
+.icard,.h-stats div,.hstep,.news,.session,.step,.people,.facts,.cd,.phases,.for,.h-feature,.reg{
+  background:var(--c-tile);border:1px solid var(--c-line);border-radius:0;box-shadow:none;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.icard,.news,.hstep,.h-stats div{transition:border-color .4s,background .4s,transform .6s var(--c-ease);transform-style:preserve-3d;will-change:transform}
+.icard:hover,.news:hover,.hstep:hover,.h-stats div:hover{background:var(--c-tile-hi);border:1px solid var(--c-line-hi);box-shadow:none}
+.icard.hot,.session.war{background:var(--c-tile);border-color:rgba(255,255,255,.55)}
+.icard.hot::after{content:"LIVE";position:absolute;top:22px;right:22px;font:700 10px/1 var(--c-body);letter-spacing:.3em;color:#000;background:#fff;padding:6px 9px}
+
+.info-grid{gap:0;margin-top:80px}
+.info-grid>.icard{margin:0 -1px -1px 0}
+.icard{padding:44px 38px 40px;gap:14px}
+.icon{width:52px;height:52px;border-radius:0;border:1px solid var(--c-line-hi);background:transparent;color:#fff;box-shadow:none;margin-bottom:22px}
+.icon svg{width:22px;height:22px}
+.icard h3,.news h3,.phase h3,.club h3{font:700 clamp(22px,2vw,26px)/1.15 var(--c-head);letter-spacing:-.005em;text-transform:none}
+.icard p,.news p{color:var(--c-mute);font-size:16px;line-height:1.6}
+.icard p b{color:#fff;font-weight:600}
+.chip,.icard .tba{background:transparent;border:1px solid var(--c-line-hi);border-radius:0;color:var(--c-soft);
+  font:700 10px/1 var(--c-body);letter-spacing:.24em;text-transform:uppercase;padding:7px 10px;-webkit-backdrop-filter:none;backdrop-filter:none}
+.chip.gold{background:#fff;color:#000;border-color:#fff}
+
+/* Stats */
+.h-stats{gap:0}
+.h-stats div{padding:40px 34px;margin:0 -1px -1px 0}
+.h-stats b{font:400 italic clamp(64px,7vw,104px)/1 var(--c-serif);letter-spacing:-.03em;color:#fff;background:none;-webkit-text-fill-color:#fff}
+.h-stats div:nth-child(even) b{background:none;-webkit-text-fill-color:#fff}
+.h-stats span{font:600 11px/1.5 var(--c-body);letter-spacing:.24em;text-transform:uppercase;color:var(--c-mute)}
+
+/* How it works */
+.h-steps{gap:0;margin-top:80px}
+.hstep{padding:28px 22px 30px;margin:0 -1px -1px 0;border-radius:0}
+.hs-ic{border-radius:0;border:1px solid var(--c-line-hi);background:transparent;color:#fff;box-shadow:none}
+.hs-n{font:700 10px/1 var(--c-body);letter-spacing:.28em;text-transform:uppercase;color:var(--c-mute)}
+.hstep b{font:800 22px/1.05 var(--c-head);font-stretch:80%;text-transform:uppercase;letter-spacing:0;color:#fff;margin-top:14px}
+.hstep>span{font-size:14px;color:var(--c-mute)}
+.h-how .hbtn-sm{margin-top:56px}
+
+/* Feature */
+.h-feature{border-radius:0;padding:clamp(34px,5vw,80px);gap:clamp(32px,5vw,72px);background:var(--c-tile)}
+.hf-media{border-radius:0;border:1px solid var(--c-line);background:transparent;box-shadow:none;padding:18px;overflow:hidden}
+.wr-poster{border:0;border-radius:0;transition:transform 1.2s var(--c-ease)}
+.hf-media:hover .wr-poster{transform:scale(1.04)}
+
+/* News */
+.news-grid{gap:0;margin-top:64px}
+.news{padding:38px 34px;border-radius:0;margin:0 -1px -1px 0}
+.news-top{font:700 10px/1 var(--c-body);letter-spacing:.28em;text-transform:uppercase}
+.news-top span{color:#fff}
+.news-top time{color:var(--c-mute)}
+
+/* About / phases */
+.phases{padding:0 38px 38px;border-radius:0}
+.phase .tag{font:400 italic 22px/1 var(--c-serif);color:#fff;letter-spacing:0;text-transform:none}
+.phase .mods{font:700 10px/1 var(--c-body);letter-spacing:.26em;text-transform:uppercase;color:var(--c-mute)}
+.phase+.phase{border-color:var(--c-line)}
+.phase p{color:var(--c-mute)}
+.for{border-radius:0;border:1px solid var(--c-line);border-left:1px solid #fff;padding:30px 38px}
+.for .k,.fact .k,.person .r,.step .k{font:700 10px/1.3 var(--c-body);letter-spacing:.26em;text-transform:uppercase;color:var(--c-mute)}
+.for .v,.fact .v{font:700 20px/1.3 var(--c-head);color:#fff}
+
+/* Schedule */
+.timeline::before{background:linear-gradient(transparent,rgba(255,255,255,.35) 4%,rgba(255,255,255,.35) 96%,transparent);width:1px}
+.stop::before{background:#0b235e;border:1px solid #fff;border-radius:0;transform:rotate(45deg);width:11px;height:11px;box-shadow:none}
+.marker{font:700 11px/1.4 var(--c-body);letter-spacing:.2em;text-transform:uppercase;color:var(--c-mute)}
+.marker::before{background:#fff;border-radius:0}
+.marker time{color:#fff}
+.session{padding:42px 40px;border-radius:0}
+.num{font:400 italic 64px/1 var(--c-serif);letter-spacing:-.03em;color:#fff;background:none;-webkit-text-fill-color:#fff}
+.s-mod{font:700 10px/1 var(--c-body);letter-spacing:.26em;text-transform:uppercase;color:var(--c-mute)}
+.session h3{font:800 clamp(28px,3.4vw,44px)/.98 var(--c-head);font-stretch:78%;text-transform:uppercase;letter-spacing:0}
+.session h3 em{display:block;margin-top:10px;font:400 italic clamp(17px,1.6vw,20px)/1.3 var(--c-serif);text-transform:none;color:var(--c-mute);font-stretch:100%}
+.focus li{color:var(--c-soft)}
+.focus li::before{background:#fff;width:10px;height:1px;border-radius:0;top:.8em}
+.trainer{border-top:1px solid var(--c-line)}
+.trainer .av{border:1px solid var(--c-line-hi);border-radius:0;color:var(--c-mute)}
+
+/* Organisers */
+.people{border-radius:0;border:1px solid var(--c-line)}
+.person{border-color:var(--c-line)!important;padding:28px 30px}
+.person .n{font:700 20px/1.3 var(--c-head);color:#fff}
+.club h3{font:800 clamp(34px,4.2vw,56px)/.96 var(--c-head);font-stretch:78%;text-transform:uppercase}
+.delivered b{font:400 italic 28px/1.2 var(--c-serif);color:#fff}
+
+/* Register */
+.reg{border-radius:0;padding:clamp(48px,7vw,100px) clamp(22px,4vw,60px)}
+.steps{gap:0}
+.step{border-radius:0;background:transparent;border:1px solid var(--c-line);margin:0 -1px -1px 0;padding:30px 26px}
+.step .k{font:400 italic 44px/1 var(--c-serif);color:#fff;letter-spacing:0;text-transform:none}
+.step .t{font:800 22px/1.05 var(--c-head);font-stretch:80%;text-transform:uppercase;color:#fff}
+.step p{color:var(--c-mute)}
+.note{color:var(--c-mute)}
+.cd{border-radius:0}
+
+/* Footer */
+footer{background:transparent;border-top:1px solid var(--c-line);-webkit-backdrop-filter:none;backdrop-filter:none;padding-block:0 34px;
+  font:600 10px/1.6 var(--c-body);letter-spacing:.24em;text-transform:uppercase;color:var(--c-mute)}
+.foot b{font-family:var(--c-body);color:#fff;font-weight:700}
+.c-footmark{display:block;padding:clamp(48px,7vw,90px) 0 clamp(28px,4vw,48px);
+  font:800 clamp(64px,15.5vw,230px)/.82 var(--c-head);font-stretch:72%;text-transform:uppercase;letter-spacing:-.01em;text-align:center;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28);white-space:nowrap;overflow:hidden}
+
+/* Veil loader bar in white */
+.veil-bar{background:rgba(255,255,255,.14);border-radius:0;height:2px}
+.veil-bar::after{background:linear-gradient(90deg,transparent,#fff,transparent)}
+
+/* ---------- Motion ---------- */
+/* Masked word reveal for headlines (spans added by cred.js) */
+.c-split .cw{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.c-split .cw>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--c-ease)}
+.c-split.c-in .cw>span{transform:none}
+/* Softer, longer rise for everything script.js reveals */
+.reveal{transform:translateY(64px);transition:opacity 1.2s var(--c-ease),transform 1.2s var(--c-ease)}
+
+@media (max-width:560px){
+  .icard,.session,.news{padding:30px 24px}
+  .phases{padding:0 22px 22px}
+  .h-count b{font-size:44px}
+  .hbtn,.btn{padding:17px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c-track{animation:none}
+  .c-split .cw>span{transform:none;transition:none}
+  .scrub .sw{opacity:1}
+  .c-scrollcue i{animation:none}
+}
+
+/* phone links inside info cards */
+.icard p a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+/* contact cards holding more than one person */
+.cperson+.cperson{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12)}
+.cperson .ilink{margin-top:8px}

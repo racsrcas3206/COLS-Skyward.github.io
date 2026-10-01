@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="theme-color" content="#050d24">
+<title>Register · COLS Skyward</title>
+<meta name="description" content="COLS Skyward — The PEP Masterclass. Club Officials Learning Seminar by the Rotaract Club of SRCAS, 13 October 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cred.css">
+<link rel="stylesheet" href="register.css">
+<script>(function(){var d=document.documentElement,r=document.referrer;try{if(r&&new URL(r).origin===location.origin){d.classList.add("nav");if(window.CSSViewTransitionRule)d.classList.add("vt")}}catch(e){}})()</script>
+<script type="speculationrules">{"prefetch":[{"where":{"selector_matches":"a[href$='.html']:not([target])"},"eagerness":"moderate"}]}</script>
+</head><body>
+<div class="veil" aria-hidden="true"><img src="images/cols-logo.webp" alt="" width="1400" height="566"><span class="veil-bar"></span></div>
+<header id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="COLS Skyward home"><img src="images/cols-logo-small.webp" alt="COLS Skyward" width="400" height="162"></a>
+    <nav class="links" id="nav-links" aria-label="Pages">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="info.html">Info Hub</a>
+      <a href="organisers.html">Organisers</a>
+      <a href="register.html" class="active" aria-current="page">Register</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta js-register" href="register.html">Register Now</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="register" class="rg-section">
+    <div class="wrap rg-wrap">
+      <div class="rg-head">
+        <span class="pill">Register</span>
+        <h2>Reserve your seats at COLS Skyward.</h2>
+        <p class="lead">No login required. Register solo or add your whole board in one submission.</p>
+      </div>
+
+      <ol class="rg-progress" id="rg-progress" aria-label="Registration steps">
+        <li class="is-active"><span class="rg-dot">1</span><span>Attendees</span></li>
+        <li><span class="rg-dot">2</span><span>Scan &amp; Pay</span></li>
+        <li><span class="rg-dot">3</span><span>Upload &amp; Submit</span></li>
+      </ol>
+      <div class="rg-bar" aria-hidden="true"><span id="rg-bar"></span></div>
+
+      <form id="rg-form" class="rg-card" novalidate>
+        <!-- STEP 1 -->
+        <fieldset class="rg-step" data-step="1">
+          <div class="rg-card-top"><span class="rg-kicker">Step 1 of 3</span><span class="rg-count" id="rg-count">1 attendee</span></div>
+          <h3 class="rg-title" tabindex="-1">Attendee details</h3>
+          <p class="rg-sub">Add each attendee with their group and club. Every attendee gets their own pass and confirmation email.</p>
+
+          <div id="rg-attendees"></div>
+
+          <div class="rg-foot">
+            <button type="button" class="rg-add" id="rg-add"><span aria-hidden="true">+</span> Add another attendee</button>
+            <div class="rg-total"><span>Total payable</span><strong id="rg-total">&#8377;99</strong><small id="rg-calc">(1 &times; &#8377;99)</small></div>
+          </div>
+          <div class="rg-actions"><button type="button" class="btn btn-gold rg-next" data-go="2">Continue &rarr;</button></div>
+        </fieldset>
+
+        <!-- STEP 2 -->
+        <fieldset class="rg-step" data-step="2" hidden>
+          <div class="rg-card-top"><span class="rg-kicker">Step 2 of 3</span><span class="rg-count" id="rg-count-2">1 attendee</span></div>
+          <h3 class="rg-title" tabindex="-1">Scan &amp; pay</h3>
+          <p class="rg-sub">Scan the QR with any UPI app (GPay, PhonePe, Paytm, BHIM). The amount is already filled in.</p>
+
+          <div class="rg-pay">
+            <div class="rg-qr" id="rg-qr"></div>
+            <div class="rg-pay-info">
+              <span class="rg-label">Amount to pay</span>
+              <strong class="rg-amount" id="rg-amount">&#8377;99</strong>
+              <small class="rg-muted" id="rg-pay-calc">1 attendee &times; &#8377;99</small>
+              <div class="rg-upi" id="rg-upi-row">
+                <span class="rg-label">UPI ID</span>
+                <div class="rg-upi-id"><code id="rg-upi-id"></code><button type="button" class="rg-copy" id="rg-copy">Copy</button></div>
+                <small class="rg-muted" id="rg-payee"></small>
+              </div>
+              <a class="rg-applink" id="rg-applink" href="#">Open in UPI app &rarr;</a>
+            </div>
+          </div>
+          <ul class="rg-tips">
+            <li>Pay the exact amount shown for all attendees in one payment.</li>
+            <li>Take a screenshot of the successful payment. You'll upload it next.</li>
+            <li>Note the 12-digit UPI transaction ID (UTR) from the payment details.</li>
+            <li>Payment trouble? Call Event Secretary <b>Rtr. Gugan</b> at <a href="tel:+919342618643">93426 18643</a>.</li>
+          </ul>
+          <div class="rg-actions"><button type="button" class="btn btn-ghost" data-go="1">&larr; Back</button><button type="button" class="btn btn-gold" data-go="3">I've paid &rarr;</button></div>
+        </fieldset>
+
+        <!-- STEP 3 -->
+        <fieldset class="rg-step" data-step="3" hidden>
+          <div class="rg-card-top"><span class="rg-kicker">Step 3 of 3</span><span class="rg-count" id="rg-count-3">1 attendee</span></div>
+          <h3 class="rg-title" tabindex="-1">Upload &amp; submit</h3>
+          <p class="rg-sub">Upload your payment screenshot so the organising team can verify it.</p>
+
+          <div class="rg-field">
+            <span class="rg-label">Payment screenshot</span>
+            <label class="rg-drop" id="rg-drop">
+              <input type="file" id="rg-file" accept="image/*">
+              <span class="rg-drop-empty"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><b>Tap to upload</b> or drag the image here<small>PNG or JPG, up to 8 MB</small></span>
+              <span class="rg-drop-full"><img id="rg-preview" alt="Payment screenshot preview"><span><b id="rg-file-name"></b><small>Tap to change</small></span></span>
+            </label>
+            <p class="rg-err" id="rg-file-err"></p>
+          </div>
+
+          <div class="rg-grid">
+            <div class="rg-field rg-span2"><label for="rg-utr">UPI transaction ID (UTR)</label><input id="rg-utr" name="utr" placeholder="12-digit number from the payment details" autocomplete="off"><p class="rg-err"></p></div>
+          </div>
+
+          <div class="rg-summary">
+            <span class="rg-label">Summary</span>
+            <ul id="rg-sum-list"></ul>
+            <div class="rg-sum-total"><span>Total paid</span><strong id="rg-sum-total">&#8377;99</strong></div>
+          </div>
+
+          <label class="rg-check"><input type="checkbox" id="rg-agree"><span>I confirm the details above are correct and I have paid <b id="rg-agree-amt">&#8377;99</b>.</span></label>
+          <p class="rg-err" id="rg-agree-err"></p>
+          <p class="rg-err rg-submit-err" id="rg-submit-err"></p>
+
+          <div class="rg-actions"><button type="button" class="btn btn-ghost" data-go="2">&larr; Back</button><button type="submit" class="btn btn-gold" id="rg-submit">Submit registration</button></div>
+        </fieldset>
+      </form>
+
+      <div class="rg-card rg-done" id="rg-done" hidden>
+        <div class="rg-done-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <h3 class="rg-title" tabindex="-1">You're registered!</h3>
+        <p class="rg-sub">Reference <b id="rg-ref"></b>. The organising team will verify your payment and email each attendee their pass. See you at SRCAS on 13 October, check-in by 09:30.</p>
+        <p class="rg-sub">Questions? Call Event Chair <b>Rtr. Athulya</b> (<a href="tel:+919345788685">93457 88685</a>) or Event Secretary <b>Rtr. Gugan</b> (<a href="tel:+919342618643">93426 18643</a>).</p>
+        <ul class="rg-done-list" id="rg-done-list"></ul>
+        <p class="rg-demo" id="rg-demo" hidden>Test mode: the form isn't connected to a sheet yet, so this registration was not saved.</p>
+        <div class="rg-actions rg-center"><a class="btn btn-ghost" href="register.html">Register another group</a><a class="btn btn-gold" href="index.html">Back to home</a></div>
+      </div>
+    </div>
+  </section>
+
+  <template id="rg-att-tpl">
+    <div class="rg-att">
+      <div class="rg-att-head"><span class="rg-att-num">1</span><span class="rg-att-label">Attendee 1</span><button type="button" class="rg-remove">Remove</button></div>
+      <div class="rg-grid">
+        <div class="rg-field"><label>Full name</label><input data-f="name" placeholder="Full name" autocomplete="name"><p class="rg-err"></p></div>
+        <div class="rg-field"><label>Email</label><input data-f="email" type="email" placeholder="you@example.com" autocomplete="email"><p class="rg-err"></p></div>
+        <div class="rg-field"><label>Mobile</label><div class="rg-phone"><span>+91</span><input data-f="mobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit number" autocomplete="tel-national"></div><p class="rg-err"></p></div>
+        <div class="rg-field"><label>Gender</label><select data-f="gender"><option>Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select><p class="rg-err"></p></div>
+        <div class="rg-field"><label>Group</label><input data-f="group" placeholder="e.g. Group 5"><p class="rg-err"></p></div>
+        <div class="rg-field"><label>Club name</label><input data-f="club" placeholder="e.g. Rotaract Club of SRCAS" autocomplete="organization"><p class="rg-err"></p></div>
+        <div class="rg-field rg-span2"><label>Board position</label><input data-f="designation" list="rg-positions" placeholder="e.g. Secretary"><p class="rg-err"></p></div>
+      </div>
+    </div>
+  </template>
+  <datalist id="rg-positions">
+    <option value="President"><option value="Vice President"><option value="Secretary"><option value="Joint Secretary"><option value="Treasurer"><option value="Sergeant-at-Arms"><option value="Club Service Director"><option value="Community Service Director"><option value="Professional Development Director"><option value="International Service Director"><option value="Public Relations Director"><option value="Editor"><option value="Club Advisor"><option value="Member">
+  </datalist>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span><b>COLS Skyward</b> · The PEP Masterclass · 13 October 2026</span>
+    <span>Rotaract Club of SRCAS · Rotaract District 3206</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="cred.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="register.js"></script>
+</body></html>
