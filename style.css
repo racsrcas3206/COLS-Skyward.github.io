@@ -786,23 +786,34 @@ footer{background:#071843}
 .people>.person:last-child{border-bottom:0}
 @media (max-width:480px){.people>.person.l{border-right:0}}
 
-/* ===== Page transitions v2 =====
+/* ===== Page transitions =====
    - First visit: logo intro (the .veil) as before.
    - Moving between pages: no logo screen. Chrome/Edge/Safari use a native
      View Transition: header stays still, content fades out upward and the
      new page rises in. Other browsers get a short fade. */
 @view-transition{navigation:auto}
 #site-header{view-transition-name:site-header}
-html.nav .veil{display:none}
+html.from-nav .veil{display:none}
 html.vt main,html.vt footer{animation:none}
-::view-transition{background:#061233}
-::view-transition-old(root){animation:vtOut .3s cubic-bezier(.4,0,1,1) both}
-::view-transition-new(root){animation:vtIn .65s cubic-bezier(.16,1,.3,1) .06s both}
-::view-transition-group(site-header){animation-duration:.45s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
-@keyframes vtOut{to{opacity:0;transform:translateY(-18px) scale(.985);filter:blur(3px)}}
-@keyframes vtIn{from{opacity:0;transform:translateY(28px) scale(.99);filter:blur(4px)}}
+/* v4: one calm motion. Old page fades out quickly, then the new page fades
+   up into place. The backdrop matches the site background, so nothing flashes,
+   and only the menu bar stays put. */
+::view-transition{background:linear-gradient(180deg,#0f2d73 0%,#0b235e 45%,#091c4d 100%)}
+::view-transition-old(root){animation:vtOut .2s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vtIn .5s cubic-bezier(.22,1,.36,1) .2s both}
+::view-transition-group(site-header){animation:none}
+::view-transition-old(site-header){animation:none;opacity:0}
+::view-transition-new(site-header){animation:none}
+@keyframes vtOut{to{opacity:0}}
+@keyframes vtIn{from{opacity:0;transform:translate3d(0,12px,0)}}
+/* arriving from another page: what is already on screen is shown at once
+   (the page itself is fading in), so nothing animates twice */
+.c-now .cw>span{transition:none!important}
 body.leaving .veil{animation:none;opacity:0;visibility:hidden;pointer-events:none}
-body.leaving main,body.leaving footer{opacity:0;transform:translateY(-12px);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,1,1)}
+body.leaving main,body.leaving footer{opacity:0;transform:translateY(-12px);transition:opacity .26s cubic-bezier(.4,0,.6,1),transform .26s cubic-bezier(.4,0,.6,1)}
 @media (prefers-reduced-motion:reduce){
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
 }
+
+.s-time{font:700 13px/1 var(--display);letter-spacing:.06em;color:var(--gold);font-variant-numeric:tabular-nums}
+.s-bolt{display:inline-block;width:.8em;height:.8em;vertical-align:-.04em;margin-left:.15em;color:var(--gold)}

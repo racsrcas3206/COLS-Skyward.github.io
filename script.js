@@ -1,42 +1,44 @@
 /* ===== EDIT HERE ===== */
 // Paste your Google Form link between the quotes to switch on registration.
 const REGISTER_URL = "";
-const EVENT_START = new Date("2026-10-13T09:30:00+05:30");
+const EVENT_START = new Date("2026-10-13T08:00:00+05:30");
 
 const SESSIONS = [
-  {n:1, phase:"Pre-Event", mod:"Module 1", title:"Pre-Event Strategy (Part I)", sub:"Need & Conceptualization",
+  {brk:"Connect & Conquer", note:"Registration & Networking", time:"08:00 – 09:00"},
+  {brk:"Setting the Stage", note:"Welcome, Objectives & Session Overview", time:"09:00 – 09:30"},
+  {n:1, time:"09:30 – 11:00", phase:"Pre-Event", mod:"Module 1", title:"From Idea to Impact", sub:"Need & Conceptualization", trainer:"Rtr. PHF PDRR Thanghapantieyaan",
    focus:["Identifying the core need / problem statement","Setting SMART goals & KPIs","Designing target-audience centric concepts","Venue, date & logistics mapping"]},
-  {n:2, phase:"Pre-Event", mod:"Module 2", title:"Pre-Event Strategy (Part II)", sub:"Finance, Sponsorship & Invites",
+  {n:2, time:"11:00 – 12:15", phase:"Pre-Event", mod:"Module 2", title:"Funding the Vision", sub:"Finance, Sponsorship & Invitations", trainer:"Rtr. PP Harshad Lakshmanan",
    focus:["Zero-based budgeting & contingency planning","Crafting winning sponsorship pitches & decks","Chief Guest / dignitary protocols & invites timeline","Marketing & design timelines"]},
-  {brk:"Tea & Networking Break", note:"15 mins"},
-  {n:3, phase:"D-Day", mod:"Module 3", title:"Event Execution (D-Day)", sub:"Run-of-Show & Crisis Management",
+  {brk:"Refuel & Reconnect", note:"Lunch Break", time:"12:15 – 13:00"},
+  {n:3, time:"13:00 – 14:30", phase:"D-Day", mod:"Module 3", title:"Make It Happen", sub:"Event Execution & Crisis Management", trainer:"Rtr. PP Vikash Subramani",
    focus:["Minute-by-Minute Execution Plan (MEP)","Role delegation & team command structure","Guest handling, stage management & tech checks","Real-time crisis & backup protocols (Plan B)"]},
-  {brk:"Lunch Break"},
-  {n:4, phase:"Post-Event", mod:"Module 4", title:"Post-Event Mechanics", sub:"Gratitude, Docs & Impact",
+  {n:4, time:"14:30 – 15:30", phase:"Post-Event", mod:"Module 4", title:"Beyond the Event", sub:"Post-Event Mechanics: Gratitude, Documentation & Impact", trainer:"Rtr. PP Vinmitha Kannan",
    focus:["Post-event reporting & Rotaract documentation","Settling accounts & financial transparency","Sponsor gratitude & relationship retention","Feedback loops & impact assessment"]},
-  {n:5, phase:"Live Workshop", mod:"Module 5", title:"The War Room", sub:"Interactive Hackathon", war:true,
+  {brk:"Recharge & Refresh", note:"Tea & Refreshments", time:"15:30 – 15:45"},
+  {n:5, time:"15:45 – 17:00", phase:"Live Workshop", mod:"Module 5", title:"The War Room", bolt:true, sub:"Interactive Event Hackathon", trainer:"Rtr. PP Shwetha S Yazhini", war:true,
    focus:["Division into 3–4 teams","A surprise event brief: plan the full PEP in 25 mins","5-minute pitches","Trainer feedback"]},
-  {brk:"Wrap-up & Close", note:"Certificate distribution & closing remarks", time:"16:00"}
+  {brk:"The Final Take-Off", note:"Valedictory Ceremony", time:"17:00 – 17:30"}
 ];
 // Info Hub cards. Edit the text, or replace "To be announced" when details are final.
 // icon: pin | clock | shirt | parking | award | phone
 const INFO = [
   {icon:"pin", title:"Venue Map", text:"<b>Sri Ramakrishna College of Arts &amp; Science</b><br>Avinashi Road, between Fun Mall &amp; Lakshmi Mills Bus Stop, Nava India Rd, Peelamedu, Coimbatore, Tamil Nadu 641006",
    link:{label:"Get directions", url:"https://maps.app.goo.gl/21EFQdrp6HhQzMbj7"}},
-  {icon:"clock", title:"Reporting Time", text:"Check-in opens before the seminar starts at <b>09:30</b> on Tue, 13 October. Sessions close at 16:00."},
+  {icon:"clock", title:"Reporting Time", text:"Report by <b>08:00</b> on Tue, 13 October for registration &amp; networking. Welcome at 09:00, sessions from 09:30, and the valedictory ceremony closes the day at 17:30."},
   {icon:"shirt", title:"Dress Code", text:"<b>Formal</b> attire for all attendees."},
   {icon:"parking", title:"Parking", text:"Park at the <b>Sri Ramakrishna College of Arts &amp; Science boys parking</b>."},
-  {icon:"award", title:"Certificate", text:"Every attendee receives a <b>certificate of participation</b> at the closing session."},
+  {icon:"award", title:"Certificate", text:"Every attendee receives a <b>certificate of participation</b> at the valedictory ceremony."},
   {icon:"phone", title:"Help & Contact", text:"Questions about the event or registration? Call Event Chair <b>Rtr. Athulya</b> (<a href=\"tel:+919345788685\">93457 88685</a>) or Event Secretary <b>Rtr. Gugan</b> (<a href=\"tel:+919342618643\">93426 18643</a>).",
    link:{label:"Contact the team", url:"contact.html", internal:true}}
 ];
 
 // Home page announcements (newest first). Add, edit or remove entries here.
 const ANNOUNCEMENTS = [
-  {tag:"Registration", date:"2026-09-30", title:"Registrations opening soon", text:"The registration form for COLS Skyward goes live shortly. Keep your board's details ready."},
-  {tag:"Venue", date:"2026-09-30", title:"Venue confirmed: SRCAS, Peelamedu", text:"COLS Skyward will be held at Sri Ramakrishna College of Arts & Science, Avinashi Road, Coimbatore."},
-  {tag:"Trainers", date:"2026-09-30", title:"Trainers to be announced", text:"Each masterclass will be led by an experienced Rotaractor. Names will be revealed here."},
-  {tag:"Info", date:"2026-09-30", title:"Dress code & parking details coming", text:"Check the Info Hub for the latest on dress code, parking and what to bring."}
+  {tag:"Trainers", date:"2026-10-04", title:"Agenda & trainers announced", text:"The full run of show is out, from 08:00 registration to the 17:30 valedictory. Check the Schedule page for every session and trainer."},
+  {tag:"Registration", date:"2026-10-04", title:"Registrations are open", text:"Register your club's officials now. ₹99 per attendee, up to 15 attendees per registration. Pay by UPI on the Register page."},
+  {tag:"Info", date:"2026-10-04", title:"Dress code & parking confirmed", text:"Formal attire for all attendees. Park at the SRCAS boys parking. Report by 08:00 on 13 October."},
+  {tag:"Venue", date:"2026-09-30", title:"Venue confirmed: SRCAS, Peelamedu", text:"COLS Skyward will be held at Sri Ramakrishna College of Arts & Science, Avinashi Road, Coimbatore."}
 ];
 /* ===================== */
 
@@ -44,7 +46,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 const tl = document.getElementById("timeline");
 if (tl) {
 
-let html = `<div class="marker"><time>09:30</time>Seminar begins</div>`;
+let html = "";
 for (const s of SESSIONS) {
   if (s.brk) {
     html += `<div class="marker">${s.time ? `<time>${s.time}</time>` : ""}${esc(s.brk)}${s.note ? ` <span style="text-transform:none;letter-spacing:0;font-weight:500">· ${esc(s.note)}</span>` : ""}</div>`;
@@ -52,8 +54,8 @@ for (const s of SESSIONS) {
   }
   html += `<article class="stop"><div class="session${s.war ? " war" : ""}">
     <div class="num" aria-hidden="true">0${s.n}</div>
-    <div class="s-meta"><span class="s-mod">Session ${s.n} · ${esc(s.mod)}</span><span class="chip${s.war ? " gold" : ""}">${esc(s.phase)}</span></div>
-    <h3>${esc(s.title)}<em>${esc(s.sub)}</em></h3>
+    <div class="s-meta">${s.time ? `<time class="s-time">${esc(s.time)}</time>` : ""}<span class="s-mod">Session ${s.n} · ${esc(s.mod)}</span><span class="chip${s.war ? " gold" : ""}">${esc(s.phase)}</span></div>
+    <h3>${esc(s.title)}${s.bolt ? ` <svg class="s-bolt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>` : ""}<em>${esc(s.sub)}</em></h3>
     <div class="focus"><span class="eyebrow" style="font-size:10px">Core focus &amp; key deliverables</span>
       <ul>${s.focus.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>
     <div class="trainer"><span class="av">${s.photo ? `<img src="${esc(s.photo)}" alt="${esc(s.trainer || "Trainer")}" loading="lazy">` : `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`}</span><span>Trainer: <b>${esc(s.trainer || "To be announced")}</b></span></div>
@@ -145,7 +147,7 @@ if (document.getElementById("countdown")) tick();
     if (native || reduce) return;
     e.preventDefault();
     document.body.classList.add("leaving");
-    setTimeout(() => { location.href = a.href; }, 220);
+    setTimeout(() => { location.href = a.href; }, 260);
   });
   // Coming back with the browser Back button: show the page again
   addEventListener("pageshow", e => { if (e.persisted) document.body.classList.remove("leaving"); });
@@ -160,7 +162,9 @@ if (document.getElementById("countdown")) tick();
   const io = new IntersectionObserver(entries => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }, {threshold: .12, rootMargin: "0px 0px -40px 0px"});
+  const arrived = document.documentElement.classList.contains("vt");
   els.forEach(el => {
+    if (arrived && el.getBoundingClientRect().top < innerHeight) return;
     const sibs = [...el.parentElement.children].filter(c => c.matches(sel));
     const i = sibs.indexOf(el);
     if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + "ms";

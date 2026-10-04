@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>html{background:#0a1f55}</style>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
@@ -12,8 +13,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:wght@400;600&display=swap">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="cred.css">
-<script>(function(){var d=document.documentElement,r=document.referrer;try{if(r&&new URL(r).origin===location.origin){d.classList.add("nav");if(window.CSSViewTransitionRule)d.classList.add("vt")}}catch(e){}})()</script>
-<script type="speculationrules">{"prefetch":[{"where":{"selector_matches":"a[href$='.html']:not([target])"},"eagerness":"moderate"}]}</script>
+<script>(function(){var d=document.documentElement,r=document.referrer;try{if(r&&new URL(r).origin===location.origin){d.classList.add("from-nav");if(window.CSSViewTransitionRule)d.classList.add("vt")}}catch(e){}})()</script>
+<script type="speculationrules">{"prerender":[{"where":{"selector_matches":"a[href$='.html']:not([target])"},"eagerness":"moderate"}]}</script>
 </head><body>
 <div class="veil" aria-hidden="true"><img src="images/cols-logo.webp" alt="" width="1400" height="566"><span class="veil-bar"></span></div>
 <header id="site-header">
@@ -49,11 +50,11 @@
 <footer>
   <div class="wrap foot">
     <span><b>COLS Skyward</b> · The PEP Masterclass · 13 October 2026</span>
-    <span>Rotaract Club of SRCAS · Rotaract District 3206</span>
+    <span>Rotaract Club of SRCAS · RI District 3206</span>
   </div>
 </footer>
 
 <script src="script.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" async onload="window.__initLenis&&__initLenis()"></script>
 <script src="cred.js"></script>
 </body></html>

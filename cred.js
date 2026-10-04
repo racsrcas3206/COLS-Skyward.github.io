@@ -4,12 +4,14 @@
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* 1. Buttery smooth scrolling (Lenis), if the library loaded */
-  if (!reduce && window.Lenis) {
+  window.__initLenis = () => {
+    if (reduce || !window.Lenis || window.__lenis) return;
     const lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
     const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     window.__lenis = lenis;
-  }
+  };
+  window.__initLenis();
 
   /* 2. Headlines: split into masked words, last word in serif italic */
   const heads = document.querySelectorAll("main h2, .club h3");
@@ -25,6 +27,8 @@
     h.classList.remove("reveal", "in");
     h.style.transitionDelay = "";
   });
+  const arrived = document.documentElement.classList.contains("vt");
+  if (arrived) heads.forEach(h => { if (h.getBoundingClientRect().top < innerHeight) h.classList.add("c-in", "c-now"); });
   if (reduce || !("IntersectionObserver" in window)) {
     heads.forEach(h => h.classList.add("c-in"));
   } else {

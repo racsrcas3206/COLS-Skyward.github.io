@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>html{background:#0a1f55}</style>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
@@ -13,8 +14,8 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="cred.css">
 <link rel="stylesheet" href="register.css">
-<script>(function(){var d=document.documentElement,r=document.referrer;try{if(r&&new URL(r).origin===location.origin){d.classList.add("nav");if(window.CSSViewTransitionRule)d.classList.add("vt")}}catch(e){}})()</script>
-<script type="speculationrules">{"prefetch":[{"where":{"selector_matches":"a[href$='.html']:not([target])"},"eagerness":"moderate"}]}</script>
+<script>(function(){var d=document.documentElement,r=document.referrer;try{if(r&&new URL(r).origin===location.origin){d.classList.add("from-nav");if(window.CSSViewTransitionRule)d.classList.add("vt")}}catch(e){}})()</script>
+<script type="speculationrules">{"prerender":[{"where":{"selector_matches":"a[href$='.html']:not([target])"},"eagerness":"moderate"}]}</script>
 </head><body>
 <div class="veil" aria-hidden="true"><img src="images/cols-logo.webp" alt="" width="1400" height="566"><span class="veil-bar"></span></div>
 <header id="site-header">
@@ -134,7 +135,7 @@
       <div class="rg-card rg-done" id="rg-done" hidden>
         <div class="rg-done-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
         <h3 class="rg-title" tabindex="-1">You're registered!</h3>
-        <p class="rg-sub">Reference <b id="rg-ref"></b>. The organising team will verify your payment and email each attendee their pass. See you at SRCAS on 13 October, check-in by 09:30.</p>
+        <p class="rg-sub">Reference <b id="rg-ref"></b>. The organising team will verify your payment and email each attendee their pass. See you at SRCAS on 13 October, check-in by 08:00.</p>
         <p class="rg-sub">Questions? Call Event Chair <b>Rtr. Athulya</b> (<a href="tel:+919345788685">93457 88685</a>) or Event Secretary <b>Rtr. Gugan</b> (<a href="tel:+919342618643">93426 18643</a>).</p>
         <ul class="rg-done-list" id="rg-done-list"></ul>
         <p class="rg-demo" id="rg-demo" hidden>Test mode: the form isn't connected to a sheet yet, so this registration was not saved.</p>
@@ -165,12 +166,12 @@
 <footer>
   <div class="wrap foot">
     <span><b>COLS Skyward</b> · The PEP Masterclass · 13 October 2026</span>
-    <span>Rotaract Club of SRCAS · Rotaract District 3206</span>
+    <span>Rotaract Club of SRCAS · RI District 3206</span>
   </div>
 </footer>
 
 <script src="script.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" async onload="window.__initLenis&&__initLenis()"></script>
 <script src="cred.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script src="register.js"></script>
