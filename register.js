@@ -90,7 +90,7 @@ const MAX_ATTENDEES = 15;
       if (!/^[6-9]\d{9}$/.test(mob.value)) fail(mob, "Enter a valid 10-digit mobile number.");
       if (!grp.value.trim()) fail(grp, "Enter the group.");
       if (club.value.trim().length < 3) fail(club, "Enter the club name.");
-      if (!des.value.trim()) fail(des, "Enter the board position.");
+      if (!des.value.trim()) fail(des, "Enter your prospective portfolio.");
     });
     if (first) first.focus();
     return !first;
