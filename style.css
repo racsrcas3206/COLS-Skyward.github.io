@@ -817,3 +817,27 @@ body.leaving main,body.leaving footer{opacity:0;transform:translateY(-12px);tran
 
 .s-time{font:700 13px/1 var(--display);letter-spacing:.06em;color:var(--gold);font-variant-numeric:tabular-nums}
 .s-bolt{display:inline-block;width:.8em;height:.8em;vertical-align:-.04em;margin-left:.15em;color:var(--gold)}
+
+
+/* =====================================================================
+   ARTIST'S SIGNATURE — small, tucked under the footer line.
+   Remove the .sig block in each page's footer to undo.
+   ===================================================================== */
+.sig{display:flex;justify-content:flex-end;align-items:baseline;gap:7px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(217,178,95,.10);line-height:1;user-select:none}
+.sig-cap{font:italic 400 11px/1 var(--serif,Georgia,serif);letter-spacing:.06em;color:rgba(255,255,255,.32)}
+.sig-name{font:400 30px/.9 "Mrs Saint Delafield",cursive;color:#d9b25f;opacity:.55;transform:rotate(-4deg);transform-origin:right bottom;
+  display:inline-block;padding-right:4px;transition:opacity .4s ease,text-shadow .4s ease}
+.sig:hover .sig-name{opacity:.95;text-shadow:0 0 14px rgba(217,178,95,.35)}
+@media (max-width:600px){.sig{justify-content:center}.sig-name{font-size:26px}}
+/* keep the signature hand-written: undo the footer's uppercase/tracking */
+footer .sig span{text-transform:none;white-space:nowrap}
+footer .sig .sig-cap{letter-spacing:.06em;font:italic 400 9.5px/1 var(--serif,Georgia,serif)}
+footer .sig .sig-name{letter-spacing:0;font:400 22px/.9 "Mrs Saint Delafield",cursive}
+@media (max-width:600px){footer .sig .sig-name{font-size:20px}}
+/* signature: whisper-quiet — barely visible until hovered */
+footer .sig{border-top:0;margin-top:6px;padding-top:0;gap:5px}
+footer .sig .sig-cap{font-size:8.5px;color:rgba(255,255,255,.14)}
+footer .sig .sig-name{font-size:16px;opacity:.16;color:#cdb98a}
+footer .sig:hover .sig-name{opacity:.7;text-shadow:none}
+footer .sig:hover .sig-cap{color:rgba(255,255,255,.4)}
+@media (max-width:600px){footer .sig .sig-name{font-size:15px}}
