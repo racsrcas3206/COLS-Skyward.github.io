@@ -4,7 +4,7 @@
 const FEE = 99;                                  // ₹ per attendee
 const UPI_ID = "9942038045@ptyes";              // QR code (with amount) is built from this
 const PAYEE_NAME = "Mr Mohan Prabhu R K";        // shown under the UPI ID (matches the name UPI apps display)
-const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbzj0_Nszvn54NT0iHEButy9MqaMIVL25hwJwZfeZT8c4cgNvKkt1jkHGMFtyjFqGV3Fhw/exec";                           // Google Apps Script web app URL (see register-apps-script.gs)
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbwbR5LOvWOKdhG0GDhwK17nciDChORpeOu2ht0LeXDp_zTnjmXEG8_dzaMnoivNqs73TA/exec";                           // Google Apps Script web app URL (see register-apps-script.gs)
 const MAX_ATTENDEES = 15;
 /* ------------------------------------------------------------- */
 
