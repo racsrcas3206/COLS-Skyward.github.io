@@ -841,3 +841,23 @@ footer .sig .sig-name{font-size:16px;opacity:.16;color:#cdb98a}
 footer .sig:hover .sig-name{opacity:.7;text-shadow:none}
 footer .sig:hover .sig-cap{color:rgba(255,255,255,.4)}
 @media (max-width:600px){footer .sig .sig-name{font-size:15px}}
+
+/* =====================================================================
+   SIGNATURE → LinkedIn link: big, clearly visible, clickable
+   ===================================================================== */
+footer a.sig{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:baseline;column-gap:10px;row-gap:16px;
+  margin-top:18px;padding:14px 0 10px;border-top:1px solid rgba(217,178,95,.14);text-decoration:none;color:inherit;cursor:pointer;user-select:none}
+footer a.sig .sig-cap{font-size:13px;color:rgba(255,255,255,.55)}
+footer a.sig .sig-name{font-size:46px;opacity:.95;color:#d9b25f;transition:text-shadow .3s ease,transform .3s ease}
+footer a.sig .sig-li{flex-basis:100%;display:flex;justify-content:flex-end;align-items:center;gap:7px;
+  font:600 13px/1 var(--sans,system-ui,sans-serif);letter-spacing:.04em;color:#d9b25f;opacity:.85;transition:opacity .3s ease,color .3s ease}
+footer a.sig .sig-li svg{flex:none}
+footer a.sig:hover .sig-name,footer a.sig:focus-visible .sig-name{text-shadow:0 0 18px rgba(217,178,95,.45);transform:rotate(-4deg) scale(1.04)}
+footer a.sig:hover .sig-li,footer a.sig:focus-visible .sig-li{opacity:1;color:#f2c96a;text-decoration:underline;text-underline-offset:3px}
+footer a.sig:hover .sig-cap{color:rgba(255,255,255,.7)}
+footer a.sig:focus-visible{outline:2px solid #d9b25f;outline-offset:4px;border-radius:6px}
+@media (max-width:600px){
+  footer a.sig{justify-content:center}
+  footer a.sig .sig-name{font-size:38px}
+  footer a.sig .sig-li{justify-content:center}
+}
